@@ -3,7 +3,7 @@
         <div class="popup-inner">
             <slot />
             <label for="editTitle"></label><h1 id="editTitle" name="editTitle">Edit</h1>
-            <label for="students">Choose a record to edit:</label>
+            <label for="students">Verander de gevevens</label>
             <br />
             <label for="id">Id</label>
             <input type="number" name="id" id="id" readonly>
@@ -15,9 +15,9 @@
             <input type="text" name="school" id="school">
             <br>
             <div>
-                <button @click='TogglePopup(); '>Close</button>
+                <button class="closeButton" @click='TogglePopup(); '>Close</button>
 
-                <button @click='edit(studentData); TogglePopup(); '>Edit</button>
+                <button class="editButton" @click='edit(studentData); TogglePopup(); '>Edit</button>
             </div>
 
         </div>
@@ -89,5 +89,24 @@
     .popup-inner{
         background: #FFF;
         padding: 32px;
+    }
+    .closeButton {
+        border-color: #ff0000;
+        padding: 5px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-left: 20px;
+    }
+    .editButton {
+        border-color: #cfd017 ;
+        padding: 5px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 5px;
+        margin-left: 20px;
     }
 </style>
