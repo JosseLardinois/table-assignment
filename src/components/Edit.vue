@@ -6,7 +6,7 @@
             <label for="students">Choose a record to edit:</label>
             <br />
             <label for="id">Id</label>
-            <input type="number" name="id" id="id">
+            <input type="number" name="id" id="id" readonly>
             <br>
             <label for="naam">Naam</label>
             <input type="text" name="naam" id="naam">
@@ -49,7 +49,7 @@
                 //alert(currentRow[0]);
 
                 //Set Placeholders
-                document.getElementById("id").placeholder = currentRow[0];
+                document.getElementById("id").value = currentRow[0];
                 document.getElementById("naam").placeholder = currentRow[1];
                 document.getElementById("school").placeholder = currentRow[2];
             }
