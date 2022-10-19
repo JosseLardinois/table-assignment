@@ -8,16 +8,16 @@
             <label for="id">Id</label>
             <input type="number" name="id" id="id">
             <br>
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name">
+            <label for="naam">Naam</label>
+            <input type="text" name="naam" id="naam">
             <br>
             <label for="school">School</label>
             <input type="text" name="school" id="school">
             <br>
             <div>
-                <button @click='edit(studentData); TogglePopup(); '>Edit</button>
-
                 <button @click='TogglePopup(); '>Close</button>
+
+                <button @click='edit(studentData); TogglePopup(); '>Edit</button>
             </div>
 
         </div>
@@ -34,11 +34,11 @@
         methods: {
             edit(studentData) {
                 const _id = document.getElementById("id").value;
-                const _name = document.getElementById("name").value;
+                const _naam = document.getElementById("naam").value;
                 const _school = document.getElementById("school").value;
                 for (const obj of studentData) {
                     if (obj.ID == _id) {
-                        obj.Name = _name;
+                        obj.Naam = _naam;
                         obj.School = _school;
                         break;
                     }
@@ -50,7 +50,7 @@
 
                 //Set Placeholders
                 document.getElementById("id").placeholder = currentRow[0];
-                document.getElementById("name").placeholder = currentRow[1];
+                document.getElementById("naam").placeholder = currentRow[1];
                 document.getElementById("school").placeholder = currentRow[2];
             }
         },

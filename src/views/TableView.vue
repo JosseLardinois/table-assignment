@@ -49,14 +49,15 @@
                 popupTriggers.value[trigger] = !popupTriggers.value[trigger]
             };
             const studentData = [
-                { ID: 1, Name: "John Cena", School: "school a" },
-                { ID: 2, Name: "Bob Ross", School: "school b" },
-                { ID: 3, Name: "John Doe", School: "school c" },
-                { ID: 4, Name: "Lorem Ipsum", School: "school d" },
-                { ID: 5, Name: "Ipsum", School: "school e" },
+                { ID: 1, Naam: "Bar", School: "Fontys Hogescholen" },
+                { ID: 2, Naam: "Bob Ross", School: "Avans Hogeschool" },
+                { ID: 3, Naam: "John Doe", School: "Technische Universiteit Eindhoven" },
+                { ID: 4, Naam: "Qux Baz", School: "Hogeschool Zuyd" },
+                { ID: 5, Naam: "Foo", School: "Expivi University" },
+                { ID: 6, Naam: "Lorem", School: "Hogeschool Ipsum" }
             ]
             const fields = [
-                'ID', 'Name', 'School'
+                'ID', 'Naam', 'School'
             ]
          
             return { studentData, fields, popupTriggers, TogglePopup }

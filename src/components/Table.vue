@@ -1,16 +1,9 @@
 <template>
-    <h1>School keuzes</h1>
+    <h1>Student School Keuzes</h1>
     <div class="searchBar">
         <!-- Filter Search -->
-        <div class="input-group mb-5">
-            <input type="search" class="form-control" v-model='searchQuery' placeholder="Name" aria-label="Recipient's username" aria-describedby="button-addon2">
-        </div>
-
-        <input type="text" v-model="search">
+        <input type="text" v-model="search" placeholder="Type een naam, school of ID" aria-label="Recipient's username" aria-describedby="button-addon2" class="form-control">
         <p v-if="noResults">Sorry, no results for {{search}}</p>
-        <div v-for="(r, i) in results" :key="i">
-            {{ r }}
-        </div>
     </div>
 
     <table id="tableComponent" class="table table-bordered table-striped">
@@ -24,7 +17,7 @@
         </thead>
         <tbody>
             <!-- Loop through the list get the each student data -->
-            <tr v-for="item in filteredList" :key='item'>
+            <tr v-for="item in results" :key='item'>
                 <td v-for="field in fields" :key='field'>
                     {{item[field]}}
                 </td>
@@ -37,28 +30,6 @@
 
 
     <!--------------------------------------------------------------------------------------------------------------------->
-
-    <table id="tableComponent" class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <!-- loop through each value of the fields to get the table header -->
-                <th v-for="field in fields" :key='field' @click="sortTable(field)">
-                    {{field}} <i class="bi bi-sort-alpha-down" aria-label='Sort Icon'></i>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Loop through the list get the each student data -->
-            <tr v-for="item in filteredList" :key='item'>
-                <td v-for="field in fields" :key='field'>
-                    {{item[field]}}
-                </td>
-                <td>
-                    <button @click='getSingleUserInfo(item); TogglePopup("buttonTrigger"); sortTable(field);'>Edit Record</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
     <Edit v-if="popupTriggers.buttonTrigger" :TogglePopup="() => TogglePopup('buttonTrigger')" :fields='fields' :studentData="studentData" :currentRow='currentRow'>
 
 
@@ -68,7 +39,6 @@
     import { computed, ref } from "vue";
     import { sortBy } from 'lodash';
     import Edit from '@/components/Edit.vue';
-    import { defineComponent } from 'vue'
     import { useVueFuse } from 'vue-fuse'
 
     import "bootstrap/dist/css/bootstrap.min.css";
@@ -77,7 +47,7 @@
         name: 'TableComponent',
         methods: {
             getSingleUserInfo(item) {
-                this.currentRow = [ item.ID, item.Name, item.School
+                this.currentRow = [ item.ID, item.Naam, item.School
                 ];
 
             }
@@ -122,24 +92,15 @@
                 }
             });
             // Filter Search
-            const filteredList = computed(() => {
-                return sortedList.value.filter((product) => {
-                    return (
-                        product.Name.toLowerCase().indexOf(searchQuery.value.toLowerCase()) != -1
-                    );
-                });
-            });
-
             const { search, results, noResults } = useVueFuse(sortedList, {
                 keys: [
-                    { name: 'Name', weight: 2 },
+                    { name: 'ID', weight: 1 },
+                    { name: 'Naam', weight: 1 },
                     { name: 'School', weight: 1 },
                 ],
-            })
-
-
+            });
             return {
-                sortedList, sortTable, searchQuery, filteredList, TogglePopup, popupTriggers, currentRow, search, results, noResults
+                sortedList, sortTable, searchQuery, TogglePopup, popupTriggers, currentRow, search, results, noResults
                 }
         }
 
