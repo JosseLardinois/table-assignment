@@ -1,19 +1,4 @@
 # table-assignment
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Assignment for Expivi
+Used fusejs for the search functionallity. 
+Following this issue: https://github.com/krisk/Fuse/issues/229 fusejs for vue has no functionallity for getting the whole list when input is empty.
