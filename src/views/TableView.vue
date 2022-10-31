@@ -3,7 +3,7 @@
         <div class="table-responsive my-5">
 
             <!-- The table component -->
-            <Table :fields='fields' :studentData="studentData"></Table>
+            <Table :defaultAll="true" :fields='fields' :studentData="studentData"></Table>
 
         </div>
         <Edit v-if="popupTriggers.buttonTrigger" :TogglePopup="() => TogglePopup('buttonTrigger')" :fields='fields' :studentData="studentData" :test='test'>
